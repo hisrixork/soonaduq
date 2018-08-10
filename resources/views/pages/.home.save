@@ -1,0 +1,106 @@
+@extends('layouts.app')
+
+@section('content')
+    <div class="row">
+        <div class="col-md-12 h-75">
+            <div class="data" data-lat="{{ $data->lat }}" data-long="{{ $data->long }}"
+                 data-times="{{ base64_encode(json_encode($data->times)) }}"
+                 data-tomorrow="{{ base64_encode(json_encode($data->tomorrow)) }}"></div>
+            <div class="info-container h-100 d-flex justify-content-center align-items-center flex-column">
+                <div class="h-25 d-flex justify-content-start align-items-start flex-column">
+                    {{ config('app.jam_name') ?? 'Nom de la mosquée' }}
+                </div>
+                @if(($today = \Carbon\Carbon::now('Europe/Paris')) !== null)
+                    <div class="h-25 d-flex justify-content-center align-items-center flex-column">
+                        <div class="info-hour fa-10x">{{ $today->format('H:i:s') }}</div>
+                    </div>
+                    <div class="h-50 d-flex justify-content-center align-items-center flex-column">
+                        <div class="info-date-french">{{ $today->formatLocalized('%A %e %B %Y') }}</div>
+                        <div class="info-date-arabic">{{ $data->hijri }}</div>
+                        <div class="info-next-time">Prochaine prière :
+                            <span class="info-next-time-label text-capitalize"></span> <br>
+                            <span class="info-next-time-value">{{ \App\Helpers::nextTime($data->times) }}</span>
+                        </div>
+                    </div>
+                @endif
+            </div>
+        </div>
+
+        <div class="col-md-12 px-0 border-top h-25">
+            <div class="time-container h-100 row">
+                @php($index = 0)
+                @foreach($data->times as $name => $time)
+                    <div class="time-item d-flex justify-content-center align-items-center flex-column{{ ++$index < count((array)$data->times) ? ' -border-bottom' : '' }}">
+
+                        <div class="time-name h-50 d-flex justify-content-center align-items-center flex-column">
+                            {{ strtoupper($name) }}
+                        </div>
+
+                        <div class="time-hour h-25 d-flex justify-content-center align-items-center flex-column">
+                            {{ \Carbon\Carbon::parse($data->times->$name->date, 'Europe/Paris')->format('H:i') }}
+                        </div>
+
+                        <div class="time-wait h-25 d-flex justify-content-center align-items-center flex-column">
+                            {{ \App\Helpers::getWait($name) }}'
+                        </div>
+                    </div>
+                @endforeach
+            </div>
+        </div>
+
+    </div>
+
+@endsection
+
+@section('javascript')
+
+
+    <script>
+
+        let data = $('.data'), lat = data.attr('data-lat') || 50.367874, long = data.attr('data-long') || 3.080602,
+            times, nextTimeUrl
+
+        // setInterval(function () {
+
+        var now = moment();
+        var next = moment();
+        var last = moment();
+        var time
+        times = JSON.parse(atob(data.attr('data-times')))
+        // console.log(now.unix(), moment(times['isha'].date).unix())
+
+        if (parseInt(now.hour()) < 1 && now.unix() > moment(times['isha'].date).unix())
+            location.reload()
+
+        if (now.unix() <= moment(times['isha'].date).unix())
+            Object.keys(times).map((key) => {
+                time = times[key]
+                if (next.unix() > last.unix() && now.unix() < moment(time.date).unix()) {
+                    $('.info-next-time .info-next-time-label').text(key)
+                    next = moment(time.date)
+                }
+                last = moment(time.date)
+            })
+        else {
+            $('.info-next-time .info-next-time-label').text('fajr')
+            next = moment(JSON.parse(atob(data.attr('data-tomorrow'))).date)
+        }
+        $('.info-next-time .info-next-time-value').text(moment.utc(moment(next).diff(moment(now))).format("HH:mm:ss"))
+        $('.info-hour').text(moment().format("HH:mm:ss"))
+
+        // times = data.attr('data-times')
+        // nextTimeUrl = data.attr('data-nextTimeUrl')
+        // axios.get(`${nextTimeUrl}?times=${times}`).then((r) => {
+        //     $('.info-next-time .info-next-time-value').text(r.data)
+        // })
+        //
+        // }, 1000)
+
+
+        // axios.get(`http://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${long}&units=metric&appid=f9951f952aed12b5ca8d359528a08f2b&imgUrl=http//openweathermap.org/img/w/&lang=fr`).then((r) => {
+        //     console.log(r)
+        // })
+
+    </script>
+
+@endsection

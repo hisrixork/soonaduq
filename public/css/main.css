@@ -1,0 +1,334 @@
+body {
+    -webkit-background-size: 100% 100%;
+    background-size: 100% 100%;
+    font-family: 'Montserrat', sans-serif;
+}
+
+*, body {
+    cursor: none;
+}
+
+.modal {
+    overflow: hidden;
+}
+
+.all-hour {
+    display: none;
+    top: 0;
+    right: 0;
+    padding-right: 15px;
+    padding-top: 15px;
+    z-index: 9999999;
+    transition: all 1s;
+}
+
+#preload {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: #fff;
+}
+
+.arab {
+    font-family: 'A Thuluth', sans-serif;
+}
+
+.ayah-arab {
+    min-height: 300px;
+    max-height: calc(100vh - 50px);
+}
+
+.row {
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+}
+
+.row.mx-auto {
+    margin-left: auto !important;
+    margin-right: auto !important;
+}
+
+.main {
+    position: relative;
+    z-index: 3;
+}
+
+.main .main-bg,
+.main .main-overlay,
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 100%;
+    width: 100%;
+}
+
+.main .main-bg {
+    z-index: -1;
+}
+
+.main .main-overlay {
+    z-index: -1;
+}
+
+.main .main-overlay,
+.modal-overlay {
+    background: rgba(0, 0, 0, .7);
+}
+
+.main .main-bg,
+.modal-content.modal-bg {
+    -webkit-background-size: 100% 100% !important;
+    background-size: 100% 100% !important;
+    transition: all 1s;
+}
+
+.main.fajr .main-bg,
+.main.fajr .modal-content.modal-bg {
+    background: url("/img/bg/fajr.jpg") no-repeat;
+}
+
+.main.dhuhr .main-bg,
+.main.dhuhr .modal-content.modal-bg {
+    background: url("/img/bg/dhuhr.jpg") no-repeat;
+}
+
+.main.asr .main-bg,
+.main.asr .modal-content.modal-bg {
+    background: url("/img/bg/asr.jpg") no-repeat;
+}
+
+.main.maghrib .main-bg,
+.main.maghrib .modal-content.modal-bg {
+    background: url("/img/bg/maghrib.jpg") no-repeat;
+}
+
+.main.isha .main-bg,
+.main.isha .modal-content.modal-bg {
+    background: url("/img/bg/isha.jpg") no-repeat;
+}
+
+.main.jum .main-bg,
+.main.jum .modal-content.modal-bg {
+    background: url("/img/bg_jum.jpg") no-repeat !important;
+    -webkit-background-size: 100% 100% !important;
+    background-size: 100% 100% !important;
+    transition: all 1s;
+}
+
+.rad,
+.saw {
+    -webkit-filter: brightness(0) invert(1);
+    filter: brightness(0) invert(1);
+}
+
+#modalHadithTitle {
+    position: fixed;
+    top: 0;
+    font-family: 'Sirin', sans-serif;
+}
+
+#modalHadithReport {
+    position: fixed;
+    bottom: 0;
+}
+
+.jum .main-overlay,
+.jum .modal-overlay {
+    background: rgba(0, 0, 0, .4);
+}
+
+.text-success {
+    color: #0e7c20 !important;
+}
+
+.bg-success {
+    background-color: #0e7c20 !important;
+}
+
+.text-danger {
+    color: #ca2703 !important;
+}
+
+.bg-danger {
+    background-color: #ca2703 !important;
+}
+
+#modalAyah .modal-content,
+#modalIqama .modal-content {
+    background-color: #eff0c7;
+    color: #26230f !important;
+}
+
+#modalAyah #modalAyahData {
+    position: absolute;
+    bottom: 0;
+    padding-bottom: 10px;
+    height: 50px;
+}
+
+.time-container {
+    height: 100vh !important;
+}
+
+.time-container .time-item {
+    height: 16.666667%;;
+}
+
+.info-date-french {
+    margin-top: -25px;
+}
+
+.info-weather {
+    position: absolute;
+    top: 10px;
+    padding-right: 17px !important;
+}
+
+.info-weather span#temp:after {
+    content: '°C';
+    position: absolute;
+    top: 0;
+    right: 5px;
+    font-size: x-small;
+}
+
+.logo-side,
+.logo-news {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 50%;
+}
+
+.logo-side img,
+.logo-news img {
+    -webkit-filter: opacity(10%) drop-shadow(5px 5px 20px black);
+    filter: opacity(10%) drop-shadow(5px 5px 20px black);
+}
+
+.info-name,
+.info-bismi,
+.info-news {
+    position: absolute;
+    left: 0;
+    right: 0;
+    width: 100%;
+}
+
+.info-name {
+    top: 0;
+    height: 10%;
+    padding-top: 10px;
+}
+
+.info-bismi {
+    top: 10%;
+    height: 10%;
+}
+
+.info-news {
+    bottom: 0;
+    height: 20%;
+    overflow: hidden;
+}
+
+.logo-news {
+    bottom: 0;
+}
+
+.info-bismi img {
+    -webkit-filter: brightness(0) invert(1);
+    filter: brightness(0) invert(1);
+}
+
+.transition-block {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 100%;
+    width: 100%;
+    z-index: 1099;
+    background: #fff;
+    display: none;
+}
+
+#modalPhone .modal-content {
+    transition: background-color 1s;
+}
+
+#modalPhone.fade {
+    transition: opacity .15s ease-out !important;
+}
+
+#modalAdhan.fade .modal-dialog,
+#modalPhone.fade .modal-dialog {
+    transition: transform 1s ease-out, -webkit-transform 1s ease-out !important;
+}
+
+.no-phone {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 510px;
+    width: 510px;
+    transition: background-color .5s;
+}
+
+.modal-black .modal-content {
+    background-color: #000;
+}
+
+.part {
+    height: 50vh;
+    background: #000;
+    transition: all 1s;
+}
+
+#part-1 {
+    -webkit-transform: translateX(-50vh) translateY(-50vw);
+    -moz-transform: translateX(-50vh) translateY(-50vw);
+    -ms-transform: translateX(-50vh) translateY(-50vw);
+    -o-transform: translateX(-50vh) translateY(-50vw);
+    transform: translateX(-50vh) translateY(-50vw);
+}
+
+#part-2 {
+    -webkit-transform: translateX(50vh) translateY(-50vw);
+    -moz-transform: translateX(50vh) translateY(-50vw);
+    -ms-transform: translateX(50vh) translateY(-50vw);
+    -o-transform: translateX(50vh) translateY(-50vw);
+    transform: translateX(50vh) translateY(-50vw);
+}
+
+#part-3 {
+    -webkit-transform: translateX(-50vh) translateY(50vw);
+    -moz-transform: translateX(-50vh) translateY(50vw);
+    -ms-transform: translateX(-50vh) translateY(50vw);
+    -o-transform: translateX(-50vh) translateY(50vw);
+    transform: translateX(-50vh) translateY(50vw);
+}
+
+#part-4 {
+    -webkit-transform: translateX(50vh) translateY(50vw);
+    -moz-transform: translateX(50vh) translateY(50vw);
+    -ms-transform: translateX(50vh) translateY(50vw);
+    -o-transform: translateX(50vh) translateY(50vw);
+    transform: translateX(50vh) translateY(50vw);
+}
+
+#part-1.in,
+#part-2.in,
+#part-3.in,
+#part-4.in {
+    transform: translateX(0) translateY(0);
+}
