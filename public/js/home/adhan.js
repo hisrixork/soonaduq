@@ -16,14 +16,17 @@ function startAdhanModal(speed = 2000, timeout = 0) {
                 i++
                 nb = 1
             }
-            adhanItem.hide()
+	    if (i < parseInt(max) + 1)
+		adhanItem.hide()
             setTimeout(() => {
                 $(`#modalAdhan .adhan-item[data-item=${i}]`).show()
             }, 250)
 
             if (i >= parseInt(max) + 1) {
                 clearInterval(interval)
-                closeAdhanModal()
+		setTimeout(function() {
+			closeAdhanModal()
+		    }, speed)
             }
 
         }, speed)
