@@ -13,6 +13,8 @@
         <link rel="stylesheet" type="text/css" href="{{ asset('css/app.css') }}">
         <link rel="stylesheet" type="text/css" href="{{ asset('css/main.css') }}">
 
+        <link rel="shortcut icon" href="{{ asset('img/logo.png') }}">
+
         @yield('stylesheet')
     </head>
     <body>
