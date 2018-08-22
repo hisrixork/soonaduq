@@ -11,7 +11,7 @@
 |
 */
 
-use App\Data;
+//use App\Data;
 
 Route::get('/', 'HomeController@index');
 Route::get('/next-time', 'ApiController@getNextTime')->name('next-time');
@@ -20,7 +20,7 @@ Route::get('/wait/{name}', 'ApiController@getWait')->name('get.wait');
 Route::get('/ayah', 'ApiController@getAyah')->name('get.ayah');
 Route::get('/hadith/{id}', 'ApiController@getHadith')->name('get.hadith');
 
-Route::get('/test', function () {
+/*Route::get('/test', function () {
     $hs = include('../database/hadith.php');
 
     $a = [];
@@ -89,4 +89,4 @@ Route::get('/test', function () {
 //
 //    return view('test', compact('data'));
 
-});
+});*/
