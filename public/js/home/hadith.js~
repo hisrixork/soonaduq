@@ -6,7 +6,7 @@ function startHadithModal() {
     axios.get('/wait/' + n).then((r) => {
         t = parseInt(r.data) > 0 ? (parseInt(r.data) * 60000) : 300000
         t -= 45000
-	//        t = 10000
+        t = 10000
         launchHadith()
         setTimeout(() => {
             closeHadithModal()

@@ -43,6 +43,6 @@ function closeAdhanModal() {
 $(function () {
     $('.btn#btnModalAdhan').click(function () {
         adhanModalInitialState()
-        startAdhanModal(3000, 1000)
+        startAdhanModal(2750, 1000)
     })
 })
