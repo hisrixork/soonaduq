@@ -162,4 +162,11 @@ class Helpers
         return $report;
     }
 
+
+    public static function getInfoNews() {
+        $news = [];
+
+        return count($news) > 0 ? $news : null;
+    }
+
 }

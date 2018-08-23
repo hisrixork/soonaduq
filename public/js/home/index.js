@@ -40,6 +40,14 @@ function setFajrTime(time) {
     $('#fajr .time-hour').text(moment(time).format('HH:mm'))
 }
 
+function scrollInfo() {
+    let news = $('#info-content-item p[data-current=true]')
+
+    news.attr('data-current', false).addClass('d-none')
+    $('#info-content-item p[data-info=' + ((parseInt(news.attr('data-info')) + 1) % $('#info-content-item p').length) + ']').attr('data-current', true).removeClass('d-none')
+
+}
+
 function intervalTime() {
     let now = moment(), next = moment(), last = moment(), times, time, name
 
@@ -122,6 +130,10 @@ $(function () {
     setTimeout(() => {
         setBg()
     }, 3000)
+
+    setInterval(function () {
+        scrollInfo()
+    }, 10000)
 
     setInterval(function () {
         setWeather()
