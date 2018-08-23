@@ -27,7 +27,7 @@
 
                 </div>
 
-                {{--@include('includes.home.infonew')--}}
+                @include('includes.home.info.new')
 
             </div>
         </div>
