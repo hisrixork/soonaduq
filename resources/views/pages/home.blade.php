@@ -17,11 +17,11 @@
 
             <div class="info-container h-100 d-flex justify-content-center align-items-center flex-column">
 
-                @include('includes.home.infoheader')
+                @include('includes.home.info.header')
 
                 <div class="h-5 d-flex justify-content-start align-items-center flex-column w-100">
 
-                    @include('includes.home.infonext', [
+                    @include('includes.home.info.next', [
                     'times' => $data->times
                     ])
 
@@ -36,7 +36,7 @@
 
             <div class="time-container h-100">
 
-                @include('includes.home.sideinfo')
+                @include('includes.home.info.side')
 
                 @include('includes.home.times', [
                 'times' => $data->times
