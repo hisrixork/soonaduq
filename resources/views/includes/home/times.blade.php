@@ -1,7 +1,7 @@
 <div class="h-50">
     @foreach($times as $name => $time)
         <div class="time-item row d-flex justify-content-center align-items-center flex-row border-top"
-             data-time="{{ $name }}">
+             data-time="{{ $name }}" id="{{ $name }}">
 
             <div class="time-name col-4 text-left">
                 {{ ucfirst($name) }}

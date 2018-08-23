@@ -6,7 +6,7 @@ function setTimeUntil(date, name) {
 
     if (parseInt(h) === 0 && parseInt(m) === 0 && parseInt(s) <= 13 && parseInt(data.attr('data-isAdhan')) === 0 && name !== 'shuruq') {
         data.attr('data-isAdhan', 1)
-            $('.btn#btnModalPhone').click()
+        $('.btn#btnModalPhone').click()
     }
 
     if (parseInt(s) === 0 || $('.info-next-time .info-next-time-label span#label span#arab').text() === '')
@@ -36,6 +36,10 @@ function setCurrentTime(name) {
     $(`.time-item[data-time=${name}]`).addClass('bg-success text-white')
 }
 
+function setFajrTime(time) {
+    $('#fajr .time-hour').text(moment(time).format('HH:mm'))
+}
+
 function intervalTime() {
     let now = moment(), next = moment(), last = moment(), times, time, name
 
@@ -58,6 +62,7 @@ function intervalTime() {
     else {
         name = 'fajr'
         next = moment(JSON.parse(atob(data.attr('data-tomorrow'))).date)
+        setFajrTime(next)
     }
     if (next.unix() === now.unix()) {
         name = 'fajr'
