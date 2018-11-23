@@ -1,4 +1,4 @@
-#Installation
+# Installation
 
 ### Cmder
 http://cmder.net/
@@ -19,7 +19,7 @@ https://gitforwindows.org/
 
 http://www.wampserver.com/
 
-###Composer
+### Composer
 *Run as administrator*
  
 https://getcomposer.org/doc/00-intro.md#installation-windows
