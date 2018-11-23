@@ -51,7 +51,7 @@ https://getcomposer.org/doc/00-intro.md#installation-windows
     ```
 	    <VirtualHost *:80>
 		    DocumentRoot « C:/app/soonaduq/public » 
-		    ServerName soonduq.local
+		    ServerName soonduq.essouna
 		    <Directory  "C:/app/soonaduq/public">
 			    AllowOverride All
 			    Require local
